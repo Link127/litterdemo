@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            width: 60%;
+            height: 600px;
+            margin: 0 auto;
+            background-color: rgba(231, 100, 100, 0.24);
+        }
+        .message_box{
+            width: 90%;
+            height: 400px;
+            margin: 0 auto;
+            border: 2px solid white;
+            padding: 10px;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+        .message_input{
+            width: 80%;
+            height: 150px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 150px;
+        }
+        .message_input>textarea{
+            display: inline-block;
+            width: 400px;
+            height: 75px;
+        }
+        .message_input>textarea:focus::placeholder{
+            color: transparent;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="title">用户留言</div>
+        <div class="message_box" id="messageBox">
+
+        </div>
+        <div class="message_input"> 
+            <textarea id="myInput" type="textarea" placeholder="请输入留言类容"></textarea>
+            <button id="doPost">提交</button>
+        </div>
+    </div>
+    <script>
+        
+        window.onload = function () {
+
+            var oMessageBox = document.getElementById("messageBox");
+            var oInput = document.getElementById("myInput");
+            var oPostBtn = document.getElementById("doPost");
+            oPostBtn.onclick = function () {
+                if (oInput.value) {
+                    //写入发表留言的时间和内容
+                    var oTime = document.createElement("div");
+                    var myDate = new Date();
+                    oTime.innerHTML = myDate.toLocaleString()+`<button>删除</button><br>`+oInput.value;
+                    oInput.value = "";
+                    oMessageBox.appendChild(oTime);
+                    // 删除留言
+                    oTime.onclick = function(e){
+                        var e = window.event || e.event;
+                        if(e.target.nodeName === "BUTTON"){
+                            oTime.remove()
+                        }
+                    }
+                }
+                else{
+                    alert("请输入你的留言")
+                }
+
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
