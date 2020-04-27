@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #drag {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="drag" style="left:0;top:0;width:100px;height:100px"></div>
+    <script>
+        var dragDiv = document.getElementById("drag");
+        dragDiv.addEventListener("mousedown", function (event) {
+            var offsetX = parseInt(dragDiv.style.left)
+            var offsetY = parseInt(dragDiv.style.top)
+            var X = event.clientX - offsetX
+            var Y = event.clientY - offsetY;
+            document.onmousemove = function (event) {
+                dragDiv.style.left = event.clientX - X + "px";
+                dragDiv.style.top = event.clientY - Y + "px";
+                // 边界判断
+                if (parseInt(dragDiv.style.left) <= 0) {
+                    dragDiv.style.left = "0px";
+                }
+                if (parseInt(dragDiv.style.top) <= 0) {
+                    dragDiv.style.top = "0px";
+                }
+                if (parseInt(dragDiv.style.left) >= window.innerWidth - parseInt(dragDiv.style.width)) {
+                    dragDiv.style.left = window.innerWidth - parseInt(dragDiv.style.width) + "px";
+                }
+                if (parseInt(dragDiv.style.top) >= window.innerHeight - parseInt(dragDiv.style.height)) {
+                    dragDiv.style.top = window.innerHeight - parseInt(dragDiv.style.height) + "px";
+                }
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+                // 清除border
+            }
+        })
+    </script>
+</body>
+
+</html>
