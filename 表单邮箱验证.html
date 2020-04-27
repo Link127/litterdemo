@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -42,10 +42,29 @@
             Email: <input type="text" name="email" size="50">
             <input type="submit" value="Submit">
         </form>
+        <a href="javascript:void(0)" onclick="window.open()">asd</a>
     </body>
 
     </html>
 
 </body>
 
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function openWin(tag,obj)
+        {
+            obj.target="_blank";
+            obj.href = "Web/Substation/Substation.aspx?stationno="+tag;
+        }
+        </script>
+<a href="javascript:void(0)" onclick="openWin(3,this)">LINK_TEST</a>
+</body>
 </html>
