@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-
-    <html>
-
-        <script type="text/javascript">
-            function validate_email(field, alerttxt) {
-                with(field) {
-                    apos = value.indexOf("@")
-                    dotpos = value.lastIndexOf(".")
-                    if (apos < 1 || dotpos - apos < 2) {
-                        alert(alerttxt);
-                        return false
-                    } else {
-                        return true
-                    }
+    <script type="text/javascript">
+        function validate_email(field, alerttxt) {
+            with(field) {
+                apos = value.indexOf("@")
+                dotpos = value.lastIndexOf(".")
+                if (apos < 1 || dotpos - apos < 2) {
+                    alert(alerttxt);
+                    return false
+                } else {
+                    return true
                 }
             }
+        }
 
-            function validate_form(thisform) {
-                with(thisform) {
-                    if (validate_email(email, "Not a valid e-mail address!") == false) {
-                        email.focus();
-                        return false
-                    }
-                }
+        function validate_form(thisform) {
+                if (validate_email(thisform.email, "Not a valid e-mail address!") == false) {
+                    thisform.email.focus();
+                    return false
+               
             }
-        </script>
+        }
+    </script>
 
 <!-- 表单name的作用 -->
 
-        <form  onsubmit="return validate_form(this);" method="post">
-            Email: <input type="text" name="email" size="50">
-            <input type="submit" value="Submit">
-        </form>
-        
-
-
-
-
+    <form  onsubmit="return validate_form(this);" method="post">
+        Email: <input type="text" name="email" size="50">
+        <input type="submit" value="Submit">
+    </form>
+</body>
 </html>
