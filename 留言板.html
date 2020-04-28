@@ -71,8 +71,10 @@
                     oInput.value = "";
                     oMessageBox.appendChild(oTime);
                     // 删除留言
-                    oTime.onclick = function(){
-                            oTime.remove()
+                    oTime.onclick = function(e){
+                            if(e.target.nodeName == "BUTTON"){
+                                oTime.remove()
+                            }
                     }
                 }
                 else{
