@@ -1,11 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top:-300px ;
+            margin-left:-400px;
+            overflow: hidden;
+        }
+        .banner{
+            width: 2400px;
+            height: 600px;
+            position: absolute;
+            left:0px;
+        }
+        .img{
+            width: 800px;
+            height: 600px;
+            float: left;
+        }
+        .arrow{
+            display: none;
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            border-radius: 50%;
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            top: 280px;
+            text-align: center;
+            line-height: 37px;
+        }
+        .arrow_left{
+            left: 10px;
+        }
+        .arrow_right{
+            right: 10px;
+        }
+        .container:hover .arrow{
+            display: block;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
 </head>
-<body>
     
+<body>
+    <div class="container">
+       <div class="banner" id="move_area">
+           <!-- <div class="img"><img src="image3.jpg" alt=""></div> -->
+           <div class="img"><img src="image1.jpg" alt=""></div>
+           <div class="img"><img src="image2.jpg" alt=""></div>
+           <div class="img"><img src="image3.jpg" alt=""></div>
+           <!-- <div class="img"><img src="image1.jpg" alt=""></div> -->
+       </div>
+        <a href="javascript:;" class="arrow arrow_left" id="btn_left">&lt;</a>
+        <a href="javascript:;" class="arrow arrow_right" id="btn_right">&gt;</a>
+    </div>
+    <script>
+        var btn_left = document.getElementById("btn_left");
+        var btn_right = document.getElementById("btn_right");
+        var banner = document.getElementById("move_area")
+        btn_left.addEventListener("click",prev_pic);
+        btn_right.addEventListener("click",next_pic)
+        var index = 0;
+        function next_pic(){
+            if(index === -1600){
+                index=0;
+                banner.style.cssText = `transition-duration: 0.8s; left:${index}px`
+            }
+            else{
+                index -= 800;
+                banner.style.cssText = `transition-duration: 0.5s; left:${index}px`
+            }
+        }
+        function prev_pic(){
+            if(index === 0){
+                index = -1600
+                banner.style.cssText = `transition-duration: 0.8s; left:${index}px`
+            }
+            else{
+                index +=800;
+                banner.style.cssText = `transition-duration: 0.5s; left:${index}px`
+            }
+        }
+    </script>
 </body>
+
 </html>
