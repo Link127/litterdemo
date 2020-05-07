@@ -74,6 +74,8 @@
         var btn_left = document.getElementById("btn_left");
         var btn_right = document.getElementById("btn_right");
         var banner = document.getElementById("move_area")
+        var center = document.getElementsByClassName("container")[0];
+        // 手点播放
         btn_left.addEventListener("click",prev_pic);
         btn_right.addEventListener("click",next_pic)
         var index = 0;
@@ -97,6 +99,18 @@
                 banner.style.cssText = `transition-duration: 0.5s; left:${index}px`
             }
         }
+        // 自动播放
+        var auto = null;
+        function autoPlay(){
+            auto = setInterval(function(){
+                next_pic()
+            },1000)
+        }
+        autoPlay()
+        center.addEventListener("mouseover",function(){
+            clearInterval(auto);
+        })
+        center.addEventListener("mouseout",autoPlay);
     </script>
 </body>
 
