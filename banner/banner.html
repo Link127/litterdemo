@@ -102,9 +102,7 @@
         // 自动播放
         var auto = null;
         function autoPlay(){
-            auto = setInterval(function(){
-                next_pic()
-            },1000)
+            auto = setInterval("next_pic()",1000)
         }
         autoPlay()
         center.addEventListener("mouseover",function(){
