@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{padding: 0;margin: 0;}
+    header{
+        width: 90%;
+        height: 50px;
+        margin: 0 auto;
+        background-color: rgb(90, 78, 78);
+        position: relative;
+    }
+    ul{
+        list-style: none;
+        float: right;
+    }
+    li{
+        float: left;
+        margin: 0 15px;
+        cursor: pointer;
+        position: relative;
+    }
+    li:hover .dropdown-content{
+        display: block;
+    }
+    .dropdown-content{
+        width: 160px;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        background-color: #f9f9f9;
+        display: none;
+        text-align: center;
+    }
+    .dropdown-content>a{
+        display: block;
+        
+    }
+</style>
+<body>
+    <header>
+        <ul>
+            <li>菜单1
+                <div class="dropdown-content">
+                    <a href="">菜鸟教程 1</a>
+                    <a href="">菜鸟教程 1</a>
+                    <a href="">菜鸟教程 1</a>
+                </div>
+            </li>
+            <li>菜单2</li>
+            <li>菜单3</li>
+        </ul>
+    </header>
+</body>
+</html>
