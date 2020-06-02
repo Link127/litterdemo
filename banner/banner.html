@@ -82,7 +82,8 @@
         function next_pic(){
             if(index === -1600){
                 index=0;
-                banner.style.cssText = `transition-duration: 0.8s; left:${index}px`
+                banner.style.cssText = `transform:translate3d(${index}px,0px,0px);
+                transition-duration: 0s; `
             }
             else{
                 index -= 800;
