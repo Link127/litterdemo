@@ -8,45 +8,39 @@
 </head>
 
 <body>
-    <style>
-        table,th,td {
-          border : 1px solid black;
-          border-collapse: collapse;
-        }
-        th,td {
-          padding: 5px;
-        }
-        </style>
-        <body>
-        
-        <button type="button" onclick="LoadDoc()">获取我的音乐列表</button>
-        <br><br>
-        <table id="demo"></table>
+
+
+    <h3>请在下面的输入框中键入字母（A - Z）：</h3>
+    <form action="">
+        姓氏：<input type="text" id="txt1" onkeyup="showHint(this.value)" />
+    </form>
+    <p>建议：<span id="txtHint"></span></p>
+
     <script>
-        function LoadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunction(this);
-                }
-            };
-            xhttp.open("GET", "music_list.xml", true);
-            xhttp.send();
+        var xmlhttp;
+
+        function loadXMLDoc(url, cfunc) {
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = cfunc;
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
         }
 
-        function myFunction(xml) {
-            var i;
-            var xmlDoc = xml.responseXML;
-            var table = "<tr><th>艺术家</th><th>曲目</th></tr>";
-            var x = xmlDoc.getElementsByTagName("TRACK");
-            for (i = 0; i < x.length; i++) {
-                table += "<tr><td>" +
-                    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-                    "</td><td>" +
-                    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-                    "</td></tr>";
-            }
-            document.getElementById("demo").innerHTML = table;
+        function showHint(str) {
+            loadXMLDoc("test.php", function () {
+                    if (str.length == 0) {
+                        document.getElementById("txtHint").innerHTML = "";
+                        return;
+                    }
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                    }
+                
+            })
         }
     </script>
 </body>
