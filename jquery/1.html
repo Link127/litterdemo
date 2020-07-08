@@ -6,11 +6,17 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <button id="aa">aaaaa</button>
+        <div class="bb">asdasd</div>
+    </div>
     <script type="text/javascript" src="jquery-3.5.1.js"></script>
     <script type="text/javascript">
-        $(function(){
-            alert('helloworld');
-        });
+       $(document).ready(function(){
+           $("#aa").click(function(){
+               $(".bb").slideToggle(5000)
+           })
+       })
 </script>
 </body>
 </html>
